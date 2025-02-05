@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidad CS 1.6</title>
+    <style>
+        /* Reset de estilo */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Fondo general oscuro */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212; /* Gris oscuro */
+            color: #fff;
+        }
+
+        /* Barra de navegación */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(40, 40, 40, 0.9) 0%, rgba(18, 18, 18, 0.8) 100%);
+            z-index: 1000;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px 20px;
+            font-size: 16px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Contenedor del logo */
+        .logo-container {
+            margin-right: 20px;
+        }
+
+        .logo-container img {
+            max-height: 150px;
+        }
+
+        /* Estilo para las palabras del menú */
+        nav a {
+            text-decoration: none;
+            padding: 8px 18px;
+            margin: 0 12px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+        }
+
+        /* Estilo para el botón Volver Atrás */
+        .back-button {
+            padding: 8px 18px;
+            background-color: rgba(40, 40, 40, 0.8);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+            margin-left: auto; /* Lo coloca al lado derecho */
+        }
+
+        .back-button:hover {
+            background-color: rgba(40, 40, 40, 0.7);
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .back-button::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #ff0000;
+        }
+
+        /* Banner oscuro destacable */
+        .banner {
+            height: 120px;
+            background-color: rgba(40, 40, 40, 0.85);
+            border-bottom: 3px solid #ff0000;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Estilo del cuadro con el título y la explicación */
+        .info-box {
+            background-color: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            padding: 20px;
+            margin: 40px auto;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .info-box h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #ff0000;
+            animation: glowing 1.5s ease-in-out infinite alternate;
+        }
+
+        .info-box p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Animación de brillo en el texto */
+        @keyframes glowing {
+            0% {
+                text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000;
+            }
+            50% {
+                text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000;
+            }
+            100% {
+                text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000;
+            }
+        }
+
+        /* Formulario de denuncia */
+        .form-container {
+            background-color: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            padding: 20px;
+            margin: 40px auto;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .form-container h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #ff0000;
+            animation: glowing 1.5s ease-in-out infinite alternate;
+        }
+
+        .form-container label {
+            display: block;
+            font-size: 16px;
+            margin: 10px 0 5px;
+        }
+
+        .form-container input,
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background-color: #2b2b2b;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .form-container input[type="file"] {
+            border: none;
+            margin-bottom: 10px;
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            background-color: #ff0000;
+            color: #fff;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .form-container button:hover {
+            background-color: #cc0000;
+        }
+
+        .denuncia-info {
+            background-color: rgba(40, 40, 40, 0.9);
+            padding: 20px;
+            color: #fff;
+            margin: 40px auto;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            display: none;
+            text-align: center;
+        }
+
+        .denuncia-info img {
+            max-width: 100%;
+            margin-top: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <nav>
+        <!-- Logo de la comunidad -->
+        <div class="logo-container">
+            <img src="LOGO FASTV5.png" alt="Logo de la comunidad">
+        </div>
+
+        <!-- Botón Volver atrás -->
+        <a href="index.html" class="back-button">Volver Atrás</a>
+    </nav>
+
+    <!-- Banner oscuro destacable -->
+    <div class="banner">
+        <!-- El banner está ahora más visible con un tono oscuro pero resaltado -->
+    </div>
+
+    <!-- Sección con la explicación de Denuncias -->
+    <div class="info-box">
+        <h2>FASTV5 - Denuncias</h2>
+        <p>Si has presenciado o eres víctima de alguna violación a las reglas de la comunidad, puedes presentar una denuncia aquí. Asegúrate de proporcionar todos los detalles necesarios.</p>
+    </div>
+
+    <!-- Cuadro de formulario de denuncia -->
+    <div class="form-container" id="form-container">
+        <h3>Denuncias de FASTV5</h3>
+        <form id="denuncia-form">
+            <label for="denunciador">Nombre del que denuncia:</label>
+            <input type="text" id="denunciador" name="denunciador" required>
+
+            <label for="denunciado">Nombre de quien denuncia:</label>
+            <input type="text" id="denunciado" name="denunciado" required>
+
+            <label for="motivo">Motivo:</label>
+            <textarea id="motivo" name="motivo" rows="4" required></textarea>
+
+            <label for="fecha">Fecha:</label>
+            <input type="text" id="fecha" name="fecha" required>
+
+            <label for="capturas">Capturas (opcional):</label>
+            <input type="file" id="capturas" name="capturas">
+
+            <button type="submit">Enviar Denuncia</button>
+        </form>
+    </div>
+
+    <!-- Sección donde aparece la denuncia después de enviarla -->
+    <div class="denuncia-info" id="denuncia-info">
+        <h3>Denuncia de FASTV5</h3>
+        <p><strong>Nombre del que denuncia:</strong> <span id="denunciador-display"></span></p>
+        <p><strong>Nombre de quien denuncia:</strong> <span id="denunciado-display"></span></p>
+        <p><strong>Motivo:</strong> <span id="motivo-display"></span></p>
+        <p><strong>Fecha:</strong> <span id="fecha-display"></span></p>
+        <p><strong>Capturas:</strong> <img id="capturas-display" src="" alt="Captura" style="max-width: 100%;"></p>
+    </div>
+
+    <!-- Logo de Instagram en la parte inferior -->
+    <div class="footer">
+        <a href="https://www.instagram.com/tu_comunidad_instagram" target="_blank">
+            <div class="instagram-logo"></div>
+        </a>
+    </div>
+
+    <script>
+        // JavaScript para manejar la muestra de los datos después de enviar el formulario
+        document.getElementById('denuncia-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Obtener los valores del formulario
+            const denunciador = document.getElementById('denunciador').value;
+            const denunciado = document.getElementById('denunciado').value;
+            const motivo = document.getElementById('motivo').value;
+            const fecha = document.getElementById('fecha').value;
+            const capturas = document.getElementById('capturas').files[0];
+
+            // Mostrar la información
+            document.getElementById('denunciador-display').textContent = denunciador;
+            document.getElementById('denunciado-display').textContent = denunciado;
+            document.getElementById('motivo-display').textContent = motivo;
+            document.getElementById('fecha-display').textContent = fecha;
+
+            // Mostrar la imagen de la captura si existe
+            if (capturas) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    document.getElementById('capturas-display').src = reader.result;
+                };
+                reader.readAsDataURL(capturas);
+            }
+
+            // Ocultar el formulario
+            document.getElementById('form-container').style.display = 'none';
+
+            // Mostrar la información de la denuncia
+            document.getElementById('denuncia-info').style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunidad CS 1.6 - Ventas</title>
+    <title>Comunidad CS 1.6</title>
     <style>
         /* Reset de estilo */
         * {
@@ -43,9 +43,25 @@
             max-height: 150px;
         }
 
-        /* Botón Volver Atrás */
-        .back-button {
+        /* Estilo para las palabras del menú */
+        nav a {
+            text-decoration: none;
+            padding: 8px 18px;
+            margin: 0 12px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease-in-out;
             position: relative;
+        }
+
+        /* Estilo para el botón Volver Atrás */
+        .back-button {
             padding: 8px 18px;
             background-color: rgba(40, 40, 40, 0.8);
             color: rgba(255, 255, 255, 0.8);
@@ -59,7 +75,12 @@
             margin-left: auto; /* Lo coloca al lado derecho */
         }
 
-        /* La línea roja debe estar siempre visible */
+        .back-button:hover {
+            background-color: rgba(40, 40, 40, 0.7);
+            color: #fff;
+            transform: scale(1.05);
+        }
+
         .back-button::after {
             content: '';
             position: absolute;
@@ -67,13 +88,7 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background-color: #ff0000; /* Línea roja */
-        }
-
-        .back-button:hover {
-            background-color: rgba(40, 40, 40, 0.7);
-            color: #fff;
-            transform: scale(1.05);
+            background-color: #ff0000;
         }
 
         /* Banner oscuro destacable */
@@ -123,91 +138,66 @@
             }
         }
 
-        /* Estilo para los botones */
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            margin-top: 15px;
-            background-color: #ff0000;
-            color: white;
-            font-size: 18px;
-            text-transform: uppercase;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            width: 100%;
-            max-width: 250px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-            animation: glowing-btn 1.5s ease-in-out infinite alternate;
-        }
-
-        /* Animación de escala y sombreado al pasar el mouse */
-        .btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.6);
-        }
-
-        /* Estilo para el formulario adicional */
-        .extra-info-box {
+        /* Cuadro de reglamentos */
+        .rules-box {
             background-color: rgba(40, 40, 40, 0.9);
             color: #fff;
-            padding: 30px;
+            padding: 20px;
             margin: 40px auto;
             width: 80%;
             max-width: 800px;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            text-align: left; /* Alineación izquierda del formulario */
+            border: 2px solid #ff0000; /* Borde rojo */
+            text-align: center; /* Centrado del texto */
         }
 
-        .extra-info-box h2 {
-            font-size: 28px;
+        .rules-box h3 {
+            font-size: 24px;
             margin-bottom: 15px;
             color: #ff0000;
             animation: glowing 1.5s ease-in-out infinite alternate;
             text-align: center; /* Centrar el título */
         }
 
-        /* Alineación de las etiquetas y campos del formulario */
-        .extra-info-box div {
-            display: flex;
-            justify-content: space-between; /* Alinea los elementos de manera horizontal */
-            margin-bottom: 20px;
-            align-items: center;
+        .rules-box ul {
+            list-style-type: none;
+            padding-left: 20px;
         }
 
-        .extra-info-box div label {
+        .rules-box ul li {
             font-size: 16px;
-            width: 30%; /* Acomoda las etiquetas al lado izquierdo */
-            text-align: left;
+            margin: 10px 0;
         }
 
-        /* Estilo para los inputs y selects */
-        .extra-info-box input, .extra-info-box select {
-            width: 60%; /* Define el tamaño de los campos */
-            padding: 10px;
-            background-color: #222;
-            color: #fff;
-            border: 1px solid #ff0000;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: all 0.3s ease;
+        .rules-box ul li::before {
+            content: "• ";
+            color: #ff0000; /* Punto rojo */
         }
 
-        /* Efecto brillante en los bordes al hacer focus */
-        .extra-info-box input:focus, .extra-info-box select:focus {
-            border: 2px solid #ff0000;
-            box-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+        /* Estilo para el logo de Instagram en el pie de página */
+        .instagram-logo {
+            display: block;
+            margin: 0 auto;
+            width: 100px;
+            height: 100px;
+            background-image: url(''); /* Cambiar la ruta si es necesario */
+            background-size: cover;
+            border-radius: 50%;
+            margin-top: 40px;
+            animation: glowing 1.5s ease-in-out infinite alternate;
+            cursor: pointer;
         }
 
-        /* Centrar el formulario y el botón */
-        .extra-info-box form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        /* Estilo para centrar el logo */
+        .footer {
+            text-align: center;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
         }
+
     </style>
 </head>
 <body>
@@ -219,7 +209,7 @@
             <img src="LOGO FASTV5.png" alt="Logo de la comunidad">
         </div>
 
-        <!-- Botón Volver Atrás -->
+        <!-- Botón Volver atrás -->
         <a href="index.html" class="back-button">Volver Atrás</a>
     </nav>
 
@@ -228,42 +218,41 @@
         <!-- El banner está ahora más visible con un tono oscuro pero resaltado -->
     </div>
 
-    <!-- Título donde estaban las opciones de navegación -->
+    <!-- Sección con la explicación de Reglamentos -->
     <div class="info-box">
-        <h2>INGRESA TUS DATOS</h2>
-        <p>Bienvenido a nuestro sistema de ventas. Aquí podrás adquirir productos y servicios exclusivos para mejorar tu experiencia en la comunidad FASTV5.</p>
+        <h2>Reglamentos</h2>
+        <p>En nuestra comunidad, es esencial seguir las normas para garantizar una experiencia positiva para todos los jugadores. Aquí te dejamos las reglas básicas para disfrutar de un ambiente justo y amigable.</p>
     </div>
 
-    <!-- Nueva sección: Formulario de administración/premium -->
-    <div class="extra-info-box">
-        <h2>SELECCIONA TU PLAN</h2>
-        <form action="#" method="get"> 
-
-            <div>
-                <label for="steamid">TAG/STEAMID:</label>
-                <input type="text" id="steamid" name="steamid" required>
-            </div>
-
-            <div>
-                <label for="password">PASSWORD:</label>
-                <input type="text" id="password" name="password">
-            </div>
-
-            <!-- Campo Rango ahora fijo a "Premium" -->
-            <div>
-                <label for="rango">RANGO:</label>
-                <input type="text" id="rango" name="rango" value="ADMIN" readonly>
-            </div>
-
-            <div>
-                <label for="dias">DIAS:</label>
-                <input type="number" id="dias" name="dias" value="30" min="1" required>
-            </div>
-
-            <!-- Botón que redirige a Mercado Libre -->
-            <a href="https://www.mercadolibre.com/jms/mla/lgz/msl/login/H4sIAAAAAAAEAzWNTQ7CIBCF78K6lj1LL0JGOgUidAhMpabp3R2MLt_3_k6VyMfN8rugMgqPkqKLrCZVEvBKNdu4iJGLoBYZfzLBiECFjIy1KXOOIY_LHaU0plZIDSUEOwe7JurCvl_CYrN4SG-DZDs-XhGH-294EhGYSzNa997njNXBQgU8zY7yDFUzUWo6UMYbbXhrgVhdk0w0tlzBPZXhuuP1Ab3eWTbgAAAA/user?alias=kovax00" class="btn" target="_blank">Pagar</a>
-        </form>
+    <!-- Cuadro de reglamentos detallados -->
+    <div class="rules-box">
+        <h3>FAST-V5 - Reglamentos</h3>
+        <ul>
+            <li>No está permitido hacer SPAM de IPs.</li>
+            <li>Respeta a todos los miembros del staff y jugadores.</li>
+            <li>Evita el uso de cheats o hacks en el juego.</li>
+            <li>Mantén un comportamiento adecuado en todo momento.</li>
+            <li>No uses nombres ofensivos o inapropiados.</li>
+            <li>Recuerda que el respeto mutuo es la clave para una buena convivencia.</li>
+        </ul>
     </div>
+
+    <!-- Logo de Instagram en la parte inferior -->
+    <div class="footer">
+        <a href="https://www.instagram.com/tu_comunidad_instagram" target="_blank">
+            <div class="instagram-logo"></div>
+        </a>
+    </div>
+
+    <script>
+        // JavaScript para abrir el menú desplegable solo al hacer click
+        const dropdownBtn = document.querySelector('.inicio');
+        const dropdown = document.querySelector('.dropdown');
+
+        dropdownBtn.addEventListener('click', function() {
+            dropdown.classList.toggle('show');
+        });
+    </script>
 
 </body>
 </html>
