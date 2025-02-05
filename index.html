@@ -32,6 +32,7 @@
             padding: 10px 20px;
             font-size: 16px;
             backdrop-filter: blur(5px);
+            flex-wrap: wrap; /* Asegura que se ajusten en pantallas pequeñas */
         }
 
         /* Contenedor del logo */
@@ -140,8 +141,9 @@
         }
 
         .image-container img {
-            width: 500px;
-            height: 500px;
+            width: 100%;
+            max-width: 500px;
+            height: auto;
             object-fit: cover;
             border-radius: 8px;
         }
@@ -214,6 +216,33 @@
             transform: translateX(-50%);
         }
 
+        /* Media query para pantallas pequeñas */
+        @media (max-width: 768px) {
+            /* Barra de navegación */
+            nav {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            /* Enlaces de la navegación */
+            nav a {
+                margin: 8px 0;
+                text-align: center;
+            }
+
+            /* Imagen */
+            .image-container img {
+                width: 90%; /* Se ajusta al tamaño del contenedor */
+                max-width: none;
+            }
+
+            /* Caja de información */
+            .info-box {
+                width: 90%;
+                margin: 20px auto;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -240,9 +269,7 @@
     </nav>
 
     <!-- Banner oscuro destacable -->
-    <div class="banner">
-        <!-- El banner está ahora más visible con un tono oscuro pero resaltado -->
-    </div>
+    <div class="banner"></div>
 
     <!-- Sección con la explicación "FASTV5 - ¿Quiénes somos?" -->
     <div class="info-box">
