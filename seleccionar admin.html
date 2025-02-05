@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidad CS 1.6 - Ventas</title>
+    <style>
+        /* Reset de estilo */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Fondo general oscuro */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212; /* Gris oscuro */
+            color: #fff;
+        }
+
+        /* Barra de navegación */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(40, 40, 40, 0.9) 0%, rgba(18, 18, 18, 0.8) 100%);
+            z-index: 1000;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px 20px;
+            font-size: 16px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Contenedor del logo */
+        .logo-container {
+            margin-right: 20px;
+        }
+
+        .logo-container img {
+            max-height: 150px;
+        }
+
+        /* Banner oscuro destacable */
+        .banner {
+            height: 120px;
+            background-color: rgba(40, 40, 40, 0.85);
+            border-bottom: 3px solid #ff0000;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Estilo del cuadro con el título y la explicación */
+        .info-box {
+            background-color: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            padding: 20px;
+            margin: 40px auto;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .info-box h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #ff0000;
+            animation: glowing 1.5s ease-in-out infinite alternate;
+        }
+
+        .info-box p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Animación de brillo en el texto */
+        @keyframes glowing {
+            0% {
+                text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000;
+            }
+            50% {
+                text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000;
+            }
+            100% {
+                text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000;
+            }
+        }
+
+        /* Estilo para los botones */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin-top: 15px;
+            background-color: #ff0000;
+            color: white;
+            font-size: 18px;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            max-width: 250px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            animation: glowing-btn 1.5s ease-in-out infinite alternate;
+        }
+
+        /* Animación de escala y sombreado al pasar el mouse */
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Estilo para el formulario adicional */
+        .extra-info-box {
+            background-color: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            padding: 30px;
+            margin: 40px auto;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            text-align: left; /* Alineación izquierda del formulario */
+        }
+
+        .extra-info-box h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #ff0000;
+            animation: glowing 1.5s ease-in-out infinite alternate;
+            text-align: center; /* Centrar el título */
+        }
+
+        /* Alineación de las etiquetas y campos del formulario */
+        .extra-info-box div {
+            display: flex;
+            justify-content: space-between; /* Alinea los elementos de manera horizontal */
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .extra-info-box div label {
+            font-size: 16px;
+            width: 30%; /* Acomoda las etiquetas al lado izquierdo */
+            text-align: left;
+        }
+
+        /* Estilo para los inputs y selects */
+        .extra-info-box input, .extra-info-box select {
+            width: 60%; /* Define el tamaño de los campos */
+            padding: 10px;
+            background-color: #222;
+            color: #fff;
+            border: 1px solid #ff0000;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        /* Efecto brillante en los bordes al hacer focus */
+        .extra-info-box input:focus, .extra-info-box select:focus {
+            border: 2px solid #ff0000;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+        }
+
+        /* Centrar el formulario y el botón */
+        .extra-info-box form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <nav>
+        <!-- Logo de la comunidad -->
+        <div class="logo-container">
+            <img src="LOGO FASTV5.png" alt="Logo de la comunidad">
+        </div>
+    </nav>
+
+    <!-- Banner oscuro destacable -->
+    <div class="banner">
+        <!-- El banner está ahora más visible con un tono oscuro pero resaltado -->
+    </div>
+
+    <!-- Título donde estaban las opciones de navegación -->
+    <div class="info-box">
+        <h2>INGRESA TUS DATOS</h2>
+        <p>Bienvenido a nuestro sistema de ventas. Aquí podrás adquirir productos y servicios exclusivos para mejorar tu experiencia en la comunidad FASTV5.</p>
+    </div>
+
+    <!-- Nueva sección: Formulario de administración/premium -->
+    <div class="extra-info-box">
+        <h2>SELECCIONA TU PLAN</h2>
+        <form action="#" method="get"> 
+
+            <div>
+                <label for="steamid">TAG/STEAMID:</label>
+                <input type="text" id="steamid" name="steamid" required>
+            </div>
+
+            <div>
+                <label for="password">PASSWORD:</label>
+                <input type="text" id="password" name="password">
+            </div>
+
+            <div>
+                <label for="rango">RANGO:</label>
+                <select id="rango" name="rango" required>
+                    <option value="admin">ADMIN</option>
+                    <option value="premium">PREMIUM</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="dias">DIAS:</label>
+                <input type="number" id="dias" name="dias" value="30" min="1" required>
+            </div>
+
+            <!-- Botón que redirige a Mercado Libre -->
+            <a href="https://www.mercadolibre.com/jms/mla/lgz/msl/login/H4sIAAAAAAAEAzWNTQ7CIBCF78K6lj1LL0JGOgUidAhMpabp3R2MLt_3_k6VyMfN8rugMgqPkqKLrCZVEvBKNdu4iJGLoBYZfzLBiECFjIy1KXOOIY_LHaU0plZIDSUEOwe7JurCvl_CYrN4SG-DZDs-XhGH-294EhGYSzNa997njNXBQgU8zY7yDFUzUWo6UMYbbXhrgVhdk0w0tlzBPZXhuuP1Ab3eWTbgAAAA/user?alias=kovax00" class="btn" target="_blank">Pagar</a>
+        </form>
+    </div>
+
+</body>
+</html>
